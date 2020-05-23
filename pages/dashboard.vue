@@ -3,10 +3,11 @@
     <div class="container">
       <graph
         v-for="graph in graph_data"
-        :key="graph_data.indexOf(graph) + 'graph'"
-        :x="graph.x"
-        :y="graph.y"
+        :key="graph.uuid"
+        :uuid="graph.uuid"
+        :channel="graph.channel"
         :title="graph.title"
+        :color="graph.color"
       />
     </div>
   </section>
@@ -24,28 +25,38 @@ export default {
     graph_data: []
   }),
   created() {
-    this.client = new Paho.Client(
-      'ec2-13-126-183-180.ap-south-1.compute.amazonaws.com',
-      Number(8000),
-      'TU00'
-    )
-
     this.graph_data.push({
-      x: [1, 2, 3, 4],
-      y: [10, 15, 13, 17],
-      title: 'Plot of Temperature vs time'
+      title: 'Temperature vs time graph',
+      uuid: 'chart1',
+      channel: 'Temperature',
+      color: '#add8e6'
     })
 
-    this.client.onConnectionLost = this.onConnectionLost
-    this.client.onMessageArrived = this.onMessageArrived
-
-    this.client.connect({ onSuccess: this.onConnect })
+    // this.graph_data.push({
+    //   title: 'Humidity vs time graph',
+    //   uuid: 'chart2',
+    //   channel: 'Humidity',
+    //   color: '#eeb26a'
+    // })
+    // this.client = new Paho.Client(
+    //   'ec2-13-126-183-180.ap-south-1.compute.amazonaws.com',
+    //   Number(8000),
+    //   'TU00' + new Date().getMilliseconds().toString()
+    // )
+    // this.client.onConnectionLost = this.onConnectionLost
+    // this.client.onMessageArrived = this.onMessageArrived
+    // this.client.connect({ onSuccess: this.onConnect })
   },
   methods: {
     onConnect() {
       console.log('onConnect')
       this.client.subscribe('Temperature')
       this.client.subscribe('Humidity')
+
+      this.client.subscribe('World')
+      const message = new Paho.Message('Hello')
+      message.destinationName = 'World'
+      this.client.send(message)
     },
     onConnectionLost(responseObject) {
       if (responseObject.errorCode !== 0) {

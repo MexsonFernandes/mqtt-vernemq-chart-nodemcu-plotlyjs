@@ -15,9 +15,11 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@statnett/vue-plotly": "^0.3.2",
     "nuxt": "^2.0.0",
     "paho-mqtt": "^1.1.0",
-    "vue-plotly": "^1.1.0"
+    "plotly.js": "^1.54.1",
+    "pubnub": "^4.27.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",

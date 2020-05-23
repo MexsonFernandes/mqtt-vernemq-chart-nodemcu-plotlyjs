@@ -14,6 +14,11 @@ export default {
         content: 'Real-time plot of DHT sensor connected to NodeMCU device.'
       }
     ],
+    script: [
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.39.1/plotly.js'
+      }
+    ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
