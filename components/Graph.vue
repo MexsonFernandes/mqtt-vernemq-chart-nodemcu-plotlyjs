@@ -67,22 +67,22 @@ export default {
       },
       xaxis: { fixedrange: true }
     }
-    setInterval(() => {
-      this.x.push(new Date().toLocaleTimeString())
-      this.y.push(Math.random())
-      // this.data = [
-      //   {
-      //     x: this.x,
-      //     y: this.y,
-      //     name: this.channel,
-      //     line: { shape: 'spline', smoothing: 1.3 },
-      //     marker: {
-      //       color: this.color,
-      //       size: 5
-      //     }
-      //   }
-      // ]
-    }, 200)
+    // setInterval(() => {
+    //   this.x.push(new Date().toLocaleTimeString())
+    //   this.y.push(Math.random())
+    //   // this.data = [
+    //   //   {
+    //   //     x: this.x,
+    //   //     y: this.y,
+    //   //     name: this.channel,
+    //   //     line: { shape: 'spline', smoothing: 1.3 },
+    //   //     marker: {
+    //   //       color: this.color,
+    //   //       size: 5
+    //   //     }
+    //   //   }
+    //   // ]
+    // }, 200)
 
     this.pubnub = new PubNub({
       publishKey: 'pub-c-3a5226f8-981d-4669-9bdb-69d63dd8cbb2',
@@ -90,10 +90,10 @@ export default {
       uuid: this.uuid
     })
 
-    this.pubnub.subscribe({
-      channels: [this.channel],
-      withPresence: true
-    })
+    // this.pubnub.subscribe({
+    //   channels: [this.channel],
+    //   withPresence: true
+    // })
 
     this.pubnub.addListener({
       message: (event) => {
