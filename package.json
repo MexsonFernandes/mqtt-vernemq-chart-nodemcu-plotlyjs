@@ -16,7 +16,7 @@
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@statnett/vue-plotly": "^0.3.2",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "paho-mqtt": "^1.1.0",
     "plotly.js": "^1.54.1",
     "pubnub": "^4.27.6"
